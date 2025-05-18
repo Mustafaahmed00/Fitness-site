@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Workout Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Fitness Workout Generator</h1>
+    </header>
+    <section id="user-area" style="text-align: center; margin-bottom: 20px;">
+        <input type="text" id="user-name-input" placeholder="Enter Your Name">
+        <button id="set-user-button">Set User</button>
+        <h2 id="welcome-message" style="margin-top: 10px;"></h2>
+    </section>
+
+    <section id="quote-of-the-day" style="text-align: center; margin: 20px auto; padding: 15px; background-color: #f9f9f9; border-left: 5px solid #007bff; max-width: 750px; border-radius: 5px;">
+        <p id="quote-text" style="font-style: italic; font-size: 1.1em; margin-bottom: 5px;">Loading inspiring quote...</p>
+        <p id="quote-author" style="font-weight: bold; text-align: right;"></p>
+    </section>
+
+    <main>
+        <section id="controls">
+            <div>
+                <label for="day-select">Select Day:</label>
+                <select id="day-select">
+                    <option value="chest">Chest Day</option>
+                    <option value="back">Back Day</option>
+                    <option value="legs">Leg Day</option>
+                    <option value="shoulders">Shoulders Day</option>
+                    <option value="arms">Arms Day</option>
+                    <option value="fullbody">Full Body</option>
+                </select>
+            </div>
+            <div>
+                <label for="training-type">Select Training Type:</label>
+                <select id="training-type">
+                    <option value="bodybuilding">Bodybuilding</option>
+                    <option value="powerlifting">Powerlifting</option>
+                    <option value="strongman">Strongman</option>
+                </select>
+            </div>
+
+            <div id="rest-timer-section" style="margin-bottom: 20px; padding: 15px; background: #e8e8e8; border-radius: 5px;">
+                <h4>Rest Timer</h4>
+                <div>
+                    <label for="rest-time-input">Rest (seconds):</label>
+                    <input type="number" id="rest-time-input" value="60" min="1" style="width: 70px; padding: 5px;">
+                </div>
+                <div id="timer-display" style="font-size: 2em; margin: 10px 0; font-weight: bold;">00:00</div>
+                <button id="start-timer-button" style="margin-right: 5px;">Start</button>
+                <button id="pause-timer-button" style="margin-right: 5px;">Pause</button>
+                <button id="reset-timer-button">Reset</button>
+            </div>
+
+            <button id="generate-workout">Generate Workout</button>
+        </section>
+        <section id="workout-display">
+            <h2>Your Workout</h2>
+            <div id="workout-plan">
+                <!-- Workout will be displayed here -->
+                <p>Select your options and click "Generate Workout".</p>
+            </div>
+            <button id="log-workout-button" style="display: none; margin-top: 15px;">Log This Workout</button>
+        </section>
+
+        <section id="progress-log" style="margin-top: 30px;">
+            <h2>My Progress Journal</h2>
+            <div id="log-display-area">
+                <p>Your logged workouts will appear here.</p>
+            </div>
+        </section>
+
+        <section id="onerm-calculator" style="margin-top: 30px;">
+            <h2>One-Rep Max (1RM) Estimator</h2>
+            <div>
+                <label for="weight-lifted">Weight Lifted (kg/lb):</label>
+                <input type="number" id="weight-lifted" placeholder="e.g., 100">
+            </div>
+            <div style="margin-top: 10px;">
+                <label for="reps-performed">Reps Performed:</label>
+                <input type="number" id="reps-performed" placeholder="e.g., 5">
+            </div>
+            <button id="calculate-1rm-button" style="margin-top: 15px;">Calculate 1RM</button>
+            <p id="onerm-result" style="margin-top: 15px; font-weight: bold;"></p>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; 2025Fitness App</p>
+        <p>Created by Mustafa</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 

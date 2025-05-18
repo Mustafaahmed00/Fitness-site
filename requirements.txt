@@ -1,0 +1,3 @@
+# This file is for Python dependencies.
+# For this project, which is primarily front-end (HTML, CSS, JavaScript),
+# this file will remain empty unless a Python-based backend is added in the future. 
