@@ -422,3 +422,179 @@ footer {
 footer p {
     margin: 5px 0;
 } 
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For tablets and smaller desktops */
+@media (max-width: 992px) {
+    main {
+        margin: 20px auto;
+        padding: 0.8rem;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    section h2 {
+        font-size: 1.6em;
+    }
+
+    .exercise-video-container {
+        max-width: 100%; /* Allow video to take full width of its container */
+    }
+}
+
+/* For mobile devices (e.g., up to 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Slightly adjust base font for mobile if needed */
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+        padding: 1rem 0;
+    }
+
+    main {
+        margin: 15px 5px; /* Reduce side margins for very small screens */
+        padding: 0.5rem;
+    }
+
+    section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    section h2 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+    }
+
+    /* Make user area inputs and button stack */
+    #user-area input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    #user-area button {
+        width: 100%;
+    }
+
+    /* Make 1RM calculator inputs stack and full width */
+    #onerm-calculator div {
+        margin-bottom: 10px; /* Add space between stacked elements */
+    }
+    #onerm-calculator input[type="number"] {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+        max-width: none; /* Override previous max-width */
+    }
+    #onerm-calculator button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    #onerm-result {
+        font-size: 1.1em;
+    }
+
+
+    #controls div {
+        margin-bottom: 15px;
+    }
+    #controls select,
+    #controls button {
+        font-size: 0.95em; /* Slightly smaller font for controls on mobile */
+        padding: 12px 15px; /* Easier tap targets */
+    }
+
+    #workout-plan li {
+        padding: 12px;
+    }
+
+    .exercise-description {
+        font-size: 0.9em;
+    }
+    
+    /* Adjust delete button and editable inputs for easier interaction */
+    .delete-exercise-button {
+        padding: 6px 10px !important;
+        font-size: 0.9em !important;
+    }
+    .editable-set, .editable-rep {
+        padding: 6px 8px !important;
+        font-size: 0.9em !important;
+    }
+
+    #rest-timer-section input[type="number"] {
+        width: 60px; /* Slightly smaller input */
+        padding: 8px 5px;
+    }
+    #timer-display {
+        font-size: 2.2em; /* Adjust timer display size */
+    }
+    #rest-timer-section button {
+        padding: 10px 12px; /* Adjust button padding */
+        font-size: 0.9em;
+        width: calc(33% - 4px); /* Attempt to keep them somewhat inline */
+        margin-right: 2px;
+        margin-left: 2px;
+    }
+     #rest-timer-section button:last-child {
+        margin-right: 2px; /* Consistent spacing */
+    }
+
+
+    #quote-of-the-day {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+    #quote-text {
+        font-size: 1.05em;
+    }
+    #quote-author {
+        font-size: 0.95em;
+    }
+
+    footer {
+        font-size: 0.85em;
+    }
+}
+
+/* Further adjustments for very small screens (e.g., up to 480px) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    section h2 {
+        font-size: 1.3em;
+    }
+    
+    button { /* Global button adjustment for small screens */
+        padding: 12px 15px; 
+        font-size: 0.95em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        font-size: 0.95em;
+        padding: 12px;
+    }
+    
+    #rest-timer-section button {
+        width: 100%; /* Stack timer buttons on very small screens */
+        margin-bottom: 8px;
+    }
+    #rest-timer-section button:last-child {
+        margin-bottom: 0;
+    }
+
+    #timer-display {
+        font-size: 2em;
+    }
+} 
