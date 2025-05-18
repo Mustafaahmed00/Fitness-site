@@ -1,6 +1,7 @@
 # Fitness Workout Generator
 
 This is a simple web application that generates a workout plan based on the selected day (e.g., Chest Day, Leg Day) and training type (e.g., Bodybuilding, Powerlifting, Strongman).
+Live Link: https://mustafaahmed00.github.io/Fitness-site/
 
 ## Features
 
