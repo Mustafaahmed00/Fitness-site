@@ -57,6 +57,13 @@
 
             <button id="generate-workout">Generate Workout</button>
         </section>
+
+        <section id="warmup-suggestions-area" style="margin-bottom: 20px;">
+            <!-- Warm-up suggestions will be displayed here by script.js -->
+            <!-- Intentionally left a bit sparse, JS will populate title and content -->
+             <div id="warmup-routine"></div>
+        </section>
+
         <section id="workout-display">
             <h2>Your Workout</h2>
             <div id="workout-plan">
@@ -85,6 +92,25 @@
             </div>
             <button id="calculate-1rm-button" style="margin-top: 15px;">Calculate 1RM</button>
             <p id="onerm-result" style="margin-top: 15px; font-weight: bold;"></p>
+        </section>
+
+        <section id="plate-calculator" style="margin-top: 30px;">
+            <h2>Barbell Plate Calculator</h2>
+            <div>
+                <label for="target-weight">Target Weight (total):</label>
+                <input type="number" id="target-weight" placeholder="e.g., 225">
+            </div>
+            <div style="margin-top: 10px;">
+                <label for="barbell-weight">Barbell Weight:</label>
+                <input type="number" id="barbell-weight" value="45" placeholder="e.g., 45">
+            </div>
+            <div style="margin-top: 10px;">
+                <p>Available plates (lbs): 45, 35, 25, 10, 5, 2.5 (standard set)</p>
+            </div>
+            <button id="calculate-plates-button" style="margin-top: 15px;">Calculate Plates</button>
+            <div id="plate-calculator-result" style="margin-top: 15px; font-weight: bold;">
+                <!-- Plate calculation will appear here -->
+            </div>
         </section>
 
     </main>

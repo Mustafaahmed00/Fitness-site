@@ -561,6 +561,13 @@ footer p {
     footer {
         font-size: 0.85em;
     }
+
+    #warmup-suggestions-area h4 {
+        font-size: 1.2em;
+    }
+    #warmup-routine li {
+        font-size: 0.9em;
+    }
 }
 
 /* Further adjustments for very small screens (e.g., up to 480px) */
@@ -596,5 +603,138 @@ footer p {
 
     #timer-display {
         font-size: 2em;
+    }
+
+    #warmup-suggestions-area h4 {
+        font-size: 1.1em;
+    }
+}
+
+/* --- Warm-up Suggestions Styling --- */
+#warmup-suggestions-area {
+    background-color: #e8f5e9; /* Light green background, distinct but calm */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+}
+
+#warmup-suggestions-area h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2e7d32; /* Darker green for heading */
+    font-size: 1.3em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #a5d6a7;
+}
+
+#warmup-routine ul {
+    padding-left: 25px; /* Indent list */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#warmup-routine li {
+    margin-bottom: 8px; /* Space between warm-up items */
+    color: #38703a; /* Slightly lighter green for text */
+    font-size: 0.95em;
+}
+
+#warmup-routine li strong {
+    color: #1b5e20; /* Even darker green for emphasis */
+}
+
+/* --- Plate Calculator Styling --- */
+#plate-calculator {
+    background-color: #fef9e7; /* Light yellow background */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #fdebd0;
+}
+
+#plate-calculator h2 { /* Re-style h2 if needed, or ensure it inherits general section h2 */
+    color: #b7950b; /* Gold/Yellowish for heading */
+    /* Inherits border-bottom from general section h2 if that's desired */
+}
+
+#plate-calculator div label {
+    /* display: block; already global? */
+    /* margin-bottom: 5px; already global? */
+    /* font-weight: bold; already global? */
+    color: #785a08; /* Darker yellow/brown for labels */
+}
+
+#plate-calculator input[type="number"] {
+    width: auto; /* Override global full width for side-by-side appearance */
+    max-width: 180px; /* Control size */
+    display: inline-block; /* Allow label and input on same line */
+    margin-right: 10px;
+}
+
+#plate-calculator button {
+    background-color: #f39c12; /* Orange/Yellow button */
+    /* color: white; already global */
+}
+#plate-calculator button:hover {
+    background-color: #d68910;
+}
+
+#plate-calculator-result {
+    font-size: 1.1em;
+    margin-top: 20px;
+    /* font-weight: bold; already in HTML inline style, can be moved here */
+}
+#plate-calculator-result h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #785a08;
+}
+#plate-calculator-result ul {
+    list-style: none;
+    padding-left: 0;
+}
+#plate-calculator-result li {
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+/* Styling for World Record Text */
+.exercise-world-record {
+    font-size: 0.85em;
+    color: #c0392b; /* A distinct, motivational color (e.g., a deep red) */
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.exercise-world-record span {
+    font-weight: bold; /* Keep 'Record:' bold */
+}
+
+/* Styling for Swap Exercise Button */
+.swap-exercise-button {
+    /* Styles are mostly set inline in JS for now for simplicity,
+       but can be centralized here if more complex styling is needed.
+       Example: */
+    /* background-color: #ffc107; */ /* Yellowish/Orange */
+    /* color: #212529; */ /* Dark text for contrast */
+    /* border: none; */
+    /* padding: 3px 7px; */
+    /* font-size: 0.8em; */
+    /* border-radius: 3px; */
+    /* cursor: pointer; */
+    /* margin-left: 8px; */
+}
+
+/* Responsive adjustments for Plate Calculator */
+@media (max-width: 768px) {
+    #plate-calculator input[type="number"] {
+        width: 100%; /* Stack inputs on mobile */
+        max-width: none;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    #plate-calculator button {
+        width: 100%;
     }
 } 

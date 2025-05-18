@@ -14,6 +14,50 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentUserName = localStorage.getItem('fitnessAppUser') || '';
     let currentGeneratedWorkout = null; // To store the latest generated workout details
 
+    // --- Warm-up Data ---
+    const warmupExercises = {
+        general: [ // General full body warm-up, can be used as a default
+            { name: "Light Cardio (Jogging in place, Jumping Jacks)", details: "3-5 minutes" },
+            { name: "Arm Circles", details: "10-15 forward & backward" },
+            { name: "Leg Swings (Forward & Sideways)", details: "10-12 each leg, each direction" },
+            { name: "Torso Twists", details: "10-15 each side" },
+            { name: "Dynamic Stretches (e.g., Walking Lunges, High Knees)", details: "5-10 reps per exercise" }
+        ],
+        chest: [
+            { name: "Arm Swings Across Chest", details: "10-15 reps" },
+            { name: "Shoulder Rotations (External/Internal with band or light weight)", details: "10-15 reps each" },
+            { name: "Push-up Scapular Retractions", details: "10-15 reps" }
+        ],
+        back: [
+            { name: "Cat-Cow Stretches", details: "10-15 cycles" },
+            { name: "Band Pull-Aparts", details: "15-20 reps" },
+            { name: "Bird-Dog", details: "10-12 reps each side" }
+        ],
+        legs: [
+            { name: "Bodyweight Squats", details: "15-20 reps" },
+            { name: "Walking Lunges", details: "10-12 reps each leg" },
+            { name: "Ankle Rotations", details: "10-15 each direction, each ankle" },
+            { name: "Hip Circles", details: "10-15 each direction" }
+        ],
+        shoulders: [
+            { name: "Shoulder Dislocates (with band or PVC pipe)", details: "10-15 reps" },
+            { name: "Wall Slides", details: "10-15 reps" },
+            { name: "Lateral Arm Raises (no weight or very light)", details: "15-20 reps" }
+        ],
+        arms: [ // Biceps & Triceps
+            { name: "Light Bicep Curls (band or very light dumbbells)", details: "15-20 reps" },
+            { name: "Light Triceps Pushdowns/Extensions (band or very light)", details: "15-20 reps" },
+            { name: "Wrist Rotations", details: "10-15 each direction" }
+        ],
+        fullbody: [ // Can reuse general or make specific
+            { name: "Light Cardio (Rowing, Assault Bike, Jogging)", details: "5-7 minutes" },
+            { name: "Dynamic Movement Circuit (e.g., Inchworms, Spider-Man Lunges, Bear Crawls)", details: "1-2 rounds" },
+            { name: "Activation for main lifts (e.g., Goblet Squats, Banded Glute Bridges)", details: "As needed" }
+        ]
+        // Strongman and Powerlifting might have more specific warmups focusing on movement prep
+        // For now, they can use the day-specific ones or general.
+    };
+
     function updateWelcomeMessage() {
         if (currentUserName) {
             welcomeMessage.textContent = `Welcome, ${currentUserName}! Let's track your progress.`;
@@ -45,8 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Barbell Bench Press",
                     sets: "4",
                     reps: "8-12",
-                    videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", // Jeff Nippard - How to Bench Press
-                    description: "The barbell bench press is a fundamental compound exercise for developing the pectoralis major (chest), as well as the anterior deltoids (front shoulders) and triceps. Its ability to handle heavy loads makes it excellent for building upper body mass and strength."
+                    videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg",
+                    description: "The barbell bench press is a fundamental compound exercise for developing the pectoralis major (chest), as well as the anterior deltoids (front shoulders) and triceps. Its ability to handle heavy loads makes it excellent for building upper body mass and strength.",
+                    alternatives: [
+                        { name: "Dumbbell Bench Press", sets: "4", reps: "8-12", videoUrl: "https://www.youtube.com/embed/VmB1G1K7v94", description: "Dumbbell bench press allows for a greater range of motion and can help address muscle imbalances." },
+                        { name: "Push-ups", sets: "4", reps: "AMRAP", videoUrl: "https://www.youtube.com/embed/IODxDxX7oi4", description: "Push-ups are a great bodyweight alternative that still effectively work the chest, shoulders, and triceps." }
+                    ]
                 },
                 {
                     name: "Incline Dumbbell Press",
@@ -75,8 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Pull-ups (or Lat Pulldowns)",
                     sets: "4",
                     reps: "AMRAP or 8-12",
-                    videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g", // Athlean-X - Pull-ups
-                    description: "Pull-ups are a highly effective compound exercise for the latissimus dorsi (lats), biceps, and overall upper back. Lat pulldowns are a good alternative if pull-ups are too challenging, providing similar muscle activation."
+                    videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g",
+                    description: "Pull-ups are a highly effective compound exercise for the latissimus dorsi (lats), biceps, and overall upper back. Lat pulldowns are a good alternative if pull-ups are too challenging, providing similar muscle activation.",
+                    alternatives: [
+                        { name: "Lat Pulldowns", sets: "4", reps: "10-15", videoUrl: "https://www.youtube.com/embed/gripNHtX8kI", description: "Lat pulldowns target similar muscles to pull-ups but allow for easier weight adjustment." },
+                        { name: "Inverted Rows", sets: "4", reps: "10-15", videoUrl: "https://www.youtube.com/embed/KOaSDBI4SUE", description: "Inverted rows are a bodyweight exercise that are a good precursor or alternative to pull-ups." }
+                    ]
                 },
                 {
                     name: "Barbell Rows",
@@ -105,8 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Barbell Squats",
                     sets: "4",
                     reps: "8-12",
-                    videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", // Alan Thrall - How to Squat
-                    description: "Barbell squats are a king of leg exercises, developing the quadriceps, hamstrings, glutes, and even engaging the core and lower back for stabilization. They are highly effective for overall leg strength and hypertrophy."
+                    videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA",
+                    description: "Barbell squats are a king of leg exercises, developing the quadriceps, hamstrings, glutes, and even engaging the core and lower back for stabilization. They are highly effective for overall leg strength and hypertrophy.",
+                    alternatives: [
+                        { name: "Goblet Squats", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/MeW_x-M9fH4", description: "Goblet squats are a more accessible squat variation, excellent for learning form and still challenging the legs and core." },
+                        { name: "Leg Press", sets: "4", reps: "12-15", videoUrl: "https://www.youtube.com/embed/sEMarc3VqD0", description: "Leg press allows for heavy leg training with less lower back strain." }
+                    ]
                 },
                 {
                     name: "Romanian Deadlifts (RDLs)",
@@ -227,49 +283,84 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         powerlifting: {
-            chest: [ // Often part of an "Upper Body" day focusing on Bench Press
-                { name: "Barbell Bench Press", sets: "5", reps: "5 (heavy)", videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", description: "The primary powerlifting movement for chest. Focus is on moving maximum weight for lower reps, building raw strength in chest, shoulders, and triceps." },
+            chest: [ 
+                { 
+                    name: "Barbell Bench Press", 
+                    sets: "5", 
+                    reps: "5 (heavy)", 
+                    videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", 
+                    description: "The primary powerlifting movement for chest. Focus is on moving maximum weight for lower reps, building raw strength in chest, shoulders, and triceps.",
+                    worldRecord: "Raw WR: 355 kg (782.6 lbs) - Julius Maddox"
+                },
                 { name: "Close-Grip Bench Press", sets: "3", reps: "6-8", videoUrl: "https://www.youtube.com/embed/nEF0bv2FW94", description: "A bench press variation that places more emphasis on the triceps and inner chest. Builds triceps strength crucial for locking out heavy benches." },
                 { name: "Paused Bench Press", sets: "3", reps: "3-5", videoUrl: "https://www.youtube.com/embed/1mPM9scyItU", description: "Involves pausing the bar on the chest, which eliminates momentum and builds strength from a dead stop. Improves control and power at the bottom of the lift." },
                 { name: "Triceps Pushdowns", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/2-LAMcpzODU", description: "Accessory exercise to build triceps volume and strength, supporting a stronger bench press lockout." }
             ],
-            back: [ // Often part of a "Deadlift/Back" day
-                { name: "Deadlifts (Conventional or Sumo)", sets: "1-3", reps: "1-5 (heavy, work up to top set)", videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", description: "A core powerlifting lift, testing overall strength. Engages nearly every muscle, primarily posterior chain (hamstrings, glutes, entire back). Sumo and Conventional are two main stances." },
+            back: [ 
+                { 
+                    name: "Deadlifts (Conventional or Sumo)", 
+                    sets: "1-3", 
+                    reps: "1-5 (heavy, work up to top set)", 
+                    videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", 
+                    description: "A core powerlifting lift, testing overall strength. Engages nearly every muscle, primarily posterior chain (hamstrings, glutes, entire back). Sumo and Conventional are two main stances.",
+                    worldRecord: "Raw Conventional WR: 487.5 kg (1,074.5 lbs) - Danny Grigsby"
+                },
                 { name: "Barbell Rows", sets: "4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/RquD0AYj0v4", description: "Builds back thickness and strength supportive of deadlifts and overall stability. Heavier weight and slightly lower reps than bodybuilding style." },
                 { name: "Good Mornings", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/vKPqcsW_1Cg", description: "Strengthens the lower back, hamstrings, and glutes. Excellent for building posterior chain strength that carries over to squats and deadlifts." },
                 { name: "Lat Pulldowns", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g", description: "Accessory exercise for lat development, contributing to a stronger and more stable upper back for all lifts." }
             ],
-            legs: [ // Often a "Squat" day
-                { name: "Barbell Squats (High Bar or Low Bar)", sets: "5", reps: "5 (heavy)", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "The primary powerlifting movement for legs. Focus on maximal weight for lower reps. High bar and low bar positions alter mechanics and muscle emphasis slightly." },
+            legs: [ 
+                { 
+                    name: "Barbell Squats (High Bar or Low Bar)", 
+                    sets: "5", 
+                    reps: "5 (heavy)", 
+                    videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", 
+                    description: "The primary powerlifting movement for legs. Focus on maximal weight for lower reps. High bar and low bar positions alter mechanics and muscle emphasis slightly.",
+                    worldRecord: "Raw WR: 490 kg (1,080.2 lbs) - Ray Williams"
+                },
                 { name: "Front Squats", sets: "3", reps: "5-8", videoUrl: "https://www.youtube.com/embed/Y2wAl3ekS4E", description: "A squat variation that emphasizes quadriceps and upper back strength. Requires core stability and helps improve posture under load." },
                 { name: "Pause Squats", sets: "3", reps: "3-5", videoUrl: "https://www.youtube.com/embed/vm0XIc2xHSc", description: "Involves pausing at the bottom of the squat, building strength out of the hole and improving control and stability. Excellent for overcoming sticking points." },
                 { name: "Hamstring Curls", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/1Tq3QdYUHBg", description: "Accessory exercise for hamstring development, contributing to knee stability and pulling strength in deadlifts." }
             ],
-             shoulders: [ // Accessory for bench day
+             shoulders: [ 
                 { name: "Overhead Press", sets: "4", reps: "5-8", videoUrl: "https://www.youtube.com/embed/2yjwXTZQDDI", description: "Builds shoulder and triceps strength, which is supportive of the bench press. Performed with a focus on strength in the 5-8 rep range." },
                 { name: "Face Pulls", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/rep-qVOkqgk", description: "Important for shoulder health, balancing out pressing movements by strengthening rear delts and external rotators." },
                 { name: "Lateral Raises", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/3VcKaXpzqRo", description: "Accessory for medial deltoid development, contributing to shoulder stability and overall aesthetics." }
             ],
-            arms: [ // Accessory, less focus in powerlifting
+            arms: [ 
                 { name: "Barbell Curls", sets: "3", reps: "8-10", videoUrl: "https://www.youtube.com/embed/kwG2ipFRgfo", description: "General bicep work, can help with elbow health and stability during heavy pressing and pulling." },
                 { name: "Skullcrushers", sets: "3", reps: "8-10", videoUrl: "https://www.youtube.com/embed/Nggo1MCEiV0", description: "Triceps isolation exercise to build strength and mass, supporting lockout in bench press and OHP." }
             ],
-            fullbody: [ // Classic 3-day splits like Starting Strength or StrongLifts 5x5 often use this structure
-                { name: "Day 1: Squat Focus", details: "Squat (e.g., 5x5), Bench Press (e.g., 5x5), Barbell Row (e.g., 5x5). Video links and descriptions would be for each specific lift.", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "Focus on mastering compound lifts. Squats for lower body and core, Bench for upper body push, Rows for upper body pull."},
+            fullbody: [ 
+                { name: "Day 1: Squat Focus", details: "Squat (e.g., 5x5), Bench Press (e.g., 5x5), Barbell Row (e.g., 5x5). Video links and descriptions would be for each specific lift.", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "Focus on mastering compound lifts. Squats for lower body and core, Bench for upper body push, Rows for upper body pull.", worldRecord: "Raw WR: 490 kg (1,080.2 lbs) - Ray Williams"},
                 { name: "Day 2: Rest or Light Activity", details: "Active recovery like walking or stretching is beneficial." , description: "Rest is crucial for muscle recovery and growth in powerlifting."},
-                { name: "Day 3: Deadlift Focus", details: "Deadlift (e.g., 1x5), Overhead Press (e.g., 5x5), Pull-ups (e.g., 3xAMRAP).", videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", description: "Deadlifts build overall strength. Overhead Press for vertical pushing. Pull-ups for vertical pulling."},
+                { name: "Day 3: Deadlift Focus", details: "Deadlift (e.g., 1x5), Overhead Press (e.g., 5x5), Pull-ups (e.g., 3xAMRAP).", videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", description: "Deadlifts build overall strength. Overhead Press for vertical pushing. Pull-ups for vertical pulling.", worldRecord: "Raw Conventional WR: 487.5 kg (1,074.5 lbs) - Danny Grigsby"},
                 { name: "Day 4: Rest or Light Activity", details: "Focus on mobility or light cardio.", description: "Continued recovery and preparation for the next heavy session."},
-                { name: "Day 5: Bench Focus", details: "Bench Press (e.g., 5x5, can be a variation or different intensity), Squat (e.g., 3x5, often lighter), Accessory exercises.", videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", description: "Another opportunity to drive bench press progress, with squats at a lighter intensity to maintain technique and volume."}
+                { name: "Day 5: Bench Focus", details: "Bench Press (e.g., 5x5, can be a variation or different intensity), Squat (e.g., 3x5, often lighter), Accessory exercises.", videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", description: "Another opportunity to drive bench press progress, with squats at a lighter intensity to maintain technique and volume.", worldRecord: "Raw WR: 355 kg (782.6 lbs) - Julius Maddox"}
             ]
         },
-        strongman: { // Focus on compound movements and events - videos will be more event-specific
-            chest: [ // Usually trained with shoulders/pressing movements
-                { name: "Log Press (or Axle Press)", sets: "5", reps: "3-5 (working up)", videoUrl: "https://www.youtube.com/embed/uXGjH7qA0cM", description: "A staple strongman overhead pressing event. The log's neutral grip and awkwardness build unique pressing strength, targeting shoulders, triceps, and chest." },
+        strongman: { 
+            chest: [ 
+                { 
+                    name: "Log Press (or Axle Press)", 
+                    sets: "5", 
+                    reps: "3-5 (working up)", 
+                    videoUrl: "https://www.youtube.com/embed/uXGjH7qA0cM", 
+                    description: "A staple strongman overhead pressing event. The log's neutral grip and awkwardness build unique pressing strength, targeting shoulders, triceps, and chest.",
+                    worldRecord: "Log Press WR: 228 kg (502.6 lbs) - Žydrūnas Savickas"
+                },
                 { name: "Incline Bench Press", sets: "3", reps: "6-8", videoUrl: "https://www.youtube.com/embed/8iPEnn-ltC8", description: "Builds upper chest and shoulder strength, useful as an accessory for overhead pressing events in strongman." },
                 { name: "Weighted Dips", sets: "3", reps: "AMRAP", videoUrl: "https://www.youtube.com/embed/6MxlhWqP4jo", description: "Develops pressing power in the chest, shoulders, and triceps. AMRAP (As Many Reps As Possible) builds muscular endurance and strength." }
             ],
-            back: [ // Crucial for deadlifts and carries
-                { name: "Axle Deadlifts (or Conventional/Sumo)", sets: "Varies", reps: "Work up to a heavy single/triple", videoUrl: "https://www.youtube.com/embed/zGrGkSAHjKk", description: "Deadlifts with an axle bar (thicker, no knurling) heavily challenge grip strength in addition to the posterior chain. Conventional/Sumo are stance options." },
+            back: [ 
+                { 
+                    name: "Axle Deadlifts (or Conventional/Sumo)", 
+                    sets: "Varies", 
+                    reps: "Work up to a heavy single/triple", 
+                    videoUrl: "https://www.youtube.com/embed/zGrGkSAHjKk", 
+                    description: "Deadlifts with an axle bar (thicker, no knurling) heavily challenge grip strength in addition to the posterior chain. Conventional/Sumo are stance options.",
+                    worldRecord: "Strongman Deadlift WR (Elephant Bar): 501 kg (1,104.5 lbs) - Hafþór Júlíus Björnsson"
+                },
                 { name: "Heavy Barbell Rows (Pendlay or Kroc Rows)", sets: "4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/RquD0AYj0v4", description: "Builds a powerful upper back necessary for stabilizing heavy loads in carries and deadlifts. Kroc rows are high-rep dumbbell rows emphasizing grip and back strength." },
                 { name: "Farmers Walk", sets: "3-4", reps: "For distance/time", videoUrl: "https://www.youtube.com/embed/PAYS8L23LEC", description: "A classic strongman event developing grip strength, core stability, upper back strength, and endurance. Involves carrying heavy implements over a set distance." },
                 { name: "Tire Flips", sets: "Varies", reps: "Number of flips or for time", videoUrl: "https://www.youtube.com/embed/Oudj2k1n9qI", description: "A full-body explosive movement that builds power, conditioning, and strength in the legs, hips, back, and arms. Technique is crucial to avoid injury." }
@@ -280,17 +371,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 { name: "Stone Loading (Atlas Stones or Sandbags)", sets: "Varies", reps: "Number of loads or to height", videoUrl: "https://www.youtube.com/embed/0n3yC9HfqgY", description: "Loading heavy, awkward objects like Atlas Stones or sandbags to a platform builds explosive power, back strength, and grip. A hallmark of strongman." },
                 { name: "Sled Drags/Pushes", sets: "3-4", reps: "For distance", videoUrl: "https://www.youtube.com/embed/LkmjDEhEnvE", description: "Excellent for building leg drive, conditioning, and mental toughness with minimal eccentric loading, allowing for frequent training." }
             ],
-            shoulders: [ // Often the primary focus in strongman pressing
-                { name: "Overhead Press (Axle, Log, Dumbbell)", sets: "5", reps: "3-5 (working up)", videoUrl: "https://www.youtube.com/embed/0RMp242mI1A", description: "Overhead pressing is a key component of strongman. Axle and Log presses are common event variations, building raw shoulder and triceps power." },
+            shoulders: [ 
+                { 
+                    name: "Overhead Press (Axle, Log, Dumbbell)", 
+                    sets: "5", 
+                    reps: "3-5 (working up)", 
+                    videoUrl: "https://www.youtube.com/embed/0RMp242mI1A", 
+                    description: "Overhead pressing is a key component of strongman. Axle and Log presses are common event variations, building raw shoulder and triceps power."
+                    // Note: Log Press WR is separate (added to Log Press specifically). Could add Axle Press WR (e.g. Žydrūnas Savickas 210kg) if a pure Axle Press entry is made.
+                },
                 { name: "Viking Press", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/7gSYT9J2_Yg", description: "A machine-based or lever-based overhead press that allows for high repetitions, building shoulder hypertrophy and endurance specific to pressing." },
                 { name: "Lateral Raises (Heavy)", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/3VcKaXpzqRo", description: "While strongman focuses on compounds, heavy lateral raises can build medial deltoid strength and size, contributing to pressing stability." },
                 { name: "Face Pulls", sets: "3", reps: "15-20", videoUrl: "https://www.youtube.com/embed/rep-qVOkqgk", description: "Crucial for shoulder health to balance heavy pressing, strengthening rear delts and external rotators." }
             ],
-            arms: [ // Mostly hit through compound movements, but some direct work can be included
+            arms: [ 
                 { name: "Strict Curls (Thick Bar if possible)", sets: "3", reps: "6-10", videoUrl: "https://www.youtube.com/embed/kwG2ipFRgfo", description: "Builds bicep strength. Using a thick bar (axle) will also heavily recruit forearm and grip strength, beneficial for many strongman events." },
-                { name: "Close Grip Log Press", sets: "3", reps: "6-10", videoUrl: "https://www.youtube.com/embed/uXGjH7qA0cM", description: "Performing log presses with a closer grip can shift more emphasis to the triceps, building pressing power specific to the implement." } // Note: Same video as general log press, technique detail.
+                { name: "Close Grip Log Press", sets: "3", reps: "6-10", videoUrl: "https://www.youtube.com/embed/uXGjH7qA0cM", description: "Performing log presses with a closer grip can shift more emphasis to the triceps, building pressing power specific to the implement." } 
             ],
-            fullbody: [ // Event training days or general conditioning (GPP)
+            fullbody: [ 
                 { name: "Event Medley 1", details: "Example: Yoke Walk -> Farmers Carry -> Sandbag Load over bar. Focus on transitions and speed.", videoUrl: "https://www.youtube.com/embed/tDS1P7yzafI", description: "Medleys combine multiple strongman events in sequence, testing overall conditioning, strength-endurance, and mental fortitude." },
                 { name: "Event Medley 2", details: "Example: Tire Flip -> Sled Drag -> Stone Over Bar. Vary events to cover different strengths.", videoUrl: "https://www.youtube.com/embed/xTireS5ak2Q", description: "Another example of an event medley, crucial for simulating competition conditions and building work capacity." },
                 { name: "Heavy Compound Lift", details: "e.g., Max Deadlift or Squat variation, or a heavy Log Press attempt. Focus on a single heavy lift.", videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", description: "Dedicated days or parts of sessions for pushing maximal strength on key compound lifts that are either events themselves or highly transferable." }
@@ -316,6 +414,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Regenerate the list based on the modified currentGeneratedWorkout
                 // This is a bit of a blunt way but ensures correct re-indexing and display
                 displayGeneratedWorkout(); 
+            });
+        });
+
+        // Swap buttons (New)
+        document.querySelectorAll('.swap-exercise-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const exerciseIndex = parseInt(e.target.getAttribute('data-index'));
+                const originalExercise = currentGeneratedWorkout.exercises[exerciseIndex];
+                
+                if (originalExercise.alternatives && originalExercise.alternatives.length > 0) {
+                    // Determine the next alternative
+                    // We'll store the current alternative index on the exercise object itself, or default to 0
+                    let currentAltIndex = originalExercise.currentAlternativeIndex || 0;
+                    
+                    const nextAlternative = originalExercise.alternatives[currentAltIndex];
+                    
+                    // Prepare the swapped exercise object
+                    // Keep original notes if any, or reset them
+                    const swappedExercise = {
+                        ...nextAlternative, // Base properties from the alternative
+                        name: nextAlternative.name, // Ensure name is from alternative
+                        sets: nextAlternative.sets || originalExercise.sets, // Use alternative's or original's
+                        reps: nextAlternative.reps || originalExercise.reps,
+                        videoUrl: nextAlternative.videoUrl || originalExercise.videoUrl,
+                        description: nextAlternative.description || originalExercise.description,
+                        alternatives: originalExercise.alternatives, // Keep the list of alternatives
+                        originalName: originalExercise.originalName || originalExercise.name, // Store original name if not already an alt
+                        currentAlternativeIndex: (currentAltIndex + 1) % originalExercise.alternatives.length, // Cycle to next
+                        notes: originalExercise.notes // Preserve notes
+                    };
+                    
+                    // If we've cycled through all alternatives, offer to go back to original
+                    if (swappedExercise.currentAlternativeIndex === 0 && originalExercise.originalName) {
+                         // Special case: next alternative is to revert to original
+                         const originalForSwap = workouts[trainingTypeSelect.value]?.[daySelect.value]?.find(ex => ex.name === originalExercise.originalName);
+                         if (originalForSwap) {
+                            currentGeneratedWorkout.exercises[exerciseIndex] = {
+                                ...originalForSwap,
+                                notes: originalExercise.notes, // Preserve notes
+                                alternatives: originalExercise.alternatives // Re-attach alternatives list
+                                // currentAlternativeIndex will be reset/undefined here
+                            };
+                         } else {
+                            // Fallback if original somehow not found (should not happen)
+                            currentGeneratedWorkout.exercises[exerciseIndex] = swappedExercise;
+                         }
+                    } else {
+                        currentGeneratedWorkout.exercises[exerciseIndex] = swappedExercise;
+                    }
+
+                    displayGeneratedWorkout();
+                }
             });
         });
 
@@ -370,11 +520,28 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(exerciseInfoSpan);
             li.appendChild(deleteButton);
 
+            // Add Swap button if alternatives exist
+            if (exercise.alternatives && exercise.alternatives.length > 0) {
+                const swapButton = document.createElement('button');
+                swapButton.textContent = 'Swap';
+                swapButton.classList.add('swap-exercise-button');
+                swapButton.setAttribute('data-index', index);
+                swapButton.style.cssText = 'margin-left: 10px; padding: 2px 5px; font-size: 0.8em; background-color: #ffc107; color: #212529; border: none; border-radius: 3px;';
+                li.appendChild(swapButton);
+            }
+
             if (exercise.description) {
                 const descP = document.createElement('p');
                 descP.classList.add('exercise-description');
                 descP.textContent = exercise.description;
                 li.appendChild(descP);
+            }
+
+            if (exercise.worldRecord) {
+                const wrP = document.createElement('p');
+                wrP.classList.add('exercise-world-record');
+                wrP.innerHTML = `🏆 <span style="font-weight:bold;">Record:</span> ${exercise.worldRecord}`;
+                li.appendChild(wrP);
             }
 
             if (exercise.videoUrl) {
@@ -418,6 +585,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const day = daySelect.value;
         const trainingType = trainingTypeSelect.value;
         const selectedWorkoutData = workouts[trainingType]?.[day];
+
+        // --- Display Warm-up Suggestions ---
+        const warmupSuggestionsArea = document.getElementById('warmup-routine'); // We'll create this div in HTML
+        warmupSuggestionsArea.innerHTML = ''; // Clear previous warm-ups
+
+        const selectedWarmups = warmupExercises[day] || warmupExercises.general; // Fallback to general warm-up
+
+        if (selectedWarmups && selectedWarmups.length > 0) {
+            const warmupHeading = document.createElement('h4'); // Changed from h3 to h4 for better hierarchy
+            warmupHeading.textContent = "Recommended Warm-up:";
+            warmupHeading.style.marginTop = "0"; // Adjust styling as needed
+            warmupSuggestionsArea.appendChild(warmupHeading);
+
+            const wu_ul = document.createElement('ul');
+            wu_ul.style.listStyleType = "'💪 '"; // Fun emoji prefix for warmups
+            wu_ul.style.paddingLeft = "20px";
+            selectedWarmups.forEach(warmup => {
+                const wu_li = document.createElement('li');
+                wu_li.innerHTML = `<strong>${warmup.name}</strong>: ${warmup.details}`;
+                wu_li.style.marginBottom = "5px";
+                wu_ul.appendChild(wu_li);
+            });
+            warmupSuggestionsArea.appendChild(wu_ul);
+        }
+        // --- End Warm-up Display ---
 
         if (selectedWorkoutData && selectedWorkoutData.length > 0) {
             currentGeneratedWorkout = {
@@ -670,6 +862,94 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Display a quote on initial load
     displayRandomQuote();
+
+    // --- Plate Calculator ---
+    const targetWeightInput = document.getElementById('target-weight');
+    const barbellWeightInput = document.getElementById('barbell-weight');
+    const calculatePlatesButton = document.getElementById('calculate-plates-button');
+    const plateResultDiv = document.getElementById('plate-calculator-result');
+    
+    // Standard plate denominations (lbs). Assumes pairs are available.
+    const standardPlates = [45, 35, 25, 10, 5, 2.5]; 
+
+    calculatePlatesButton.addEventListener('click', () => {
+        const targetWeight = parseFloat(targetWeightInput.value);
+        const barWeight = parseFloat(barbellWeightInput.value);
+        plateResultDiv.innerHTML = ''; // Clear previous results
+
+        if (isNaN(targetWeight) || isNaN(barWeight) || targetWeight <= 0 || barWeight < 0) {
+            plateResultDiv.textContent = 'Please enter valid positive numbers for target and bar weight.';
+            plateResultDiv.style.color = 'red';
+            return;
+        }
+
+        if (targetWeight < barWeight) {
+            plateResultDiv.textContent = 'Target weight cannot be less than bar weight.';
+            plateResultDiv.style.color = 'red';
+            return;
+        }
+
+        if (targetWeight === barWeight) {
+            plateResultDiv.textContent = 'No plates needed. Lift the bar!';
+            plateResultDiv.style.color = 'green';
+            return;
+        }
+
+        let weightToAddTotal = targetWeight - barWeight;
+        if (weightToAddTotal < 0) weightToAddTotal = 0; // Should be caught by target < bar, but safety.
+        
+        // Ensure weight to add is divisible by the smallest increment (e.g. 2 * 2.5 = 5 for pairs)
+        // Or at least an increment that makes sense with plates (e.g. 2.5 for one side for smallest plate)
+        if ((weightToAddTotal % (standardPlates[standardPlates.length-1] * 2)) !== 0 && weightToAddTotal % standardPlates[standardPlates.length-1] !== 0) {
+            const remainder = weightToAddTotal % (standardPlates[standardPlates.length-1] * 2);
+            if(remainder !== 0 && remainder % standardPlates[standardPlates.length-1] !== 0){
+                 plateResultDiv.innerHTML = `Target weight is not achievable with standard plates. <br>Weight to add (${weightToAddTotal} lbs) has a remainder that cannot be made with 2.5lb increments per side.`;
+                 plateResultDiv.style.color = 'orange';
+                 return;
+            }
+        }
+
+        let weightPerSide = weightToAddTotal / 2.0;
+        let remainingWeightPerSide = weightPerSide;
+        const platesPerSide = {};
+
+        for (const plate of standardPlates) {
+            if (remainingWeightPerSide >= plate) {
+                const count = Math.floor(remainingWeightPerSide / plate);
+                platesPerSide[plate] = count;
+                remainingWeightPerSide -= count * plate;
+                remainingWeightPerSide = parseFloat(remainingWeightPerSide.toFixed(2)); // Handle potential float issues
+            }
+        }
+
+        if (remainingWeightPerSide > 0) {
+            // This might happen if the weight isn't perfectly divisible or due to very small float inaccuracies
+            // For example, if target is 137 (bar 45 -> 92 to add -> 46 per side)
+            // 1x45, remainder 1. Should try to make this with smaller plates if possible.
+            // The previous check for divisibility by smallest plate * 2 should minimize this for typical scenarios.
+             plateResultDiv.innerHTML = `Cannot make exact weight. <br>Remaining per side: ${remainingWeightPerSide.toFixed(2)} lbs. Try adjusting target slightly.`;
+             plateResultDiv.style.color = 'orange';
+             return;
+        }
+
+        let resultHTML = '<h4>Plates per side:</h4><ul>';
+        let platesFound = false;
+        for (const plate of standardPlates) {
+            if (platesPerSide[plate] && platesPerSide[plate] > 0) {
+                resultHTML += `<li>${platesPerSide[plate]} x ${plate} lbs</li>`;
+                platesFound = true;
+            }
+        }
+        if (!platesFound && weightToAddTotal > 0) {
+             resultHTML += '<li>Could not determine plate combination with available plates for the weight to add.</li>';
+        } else if (!platesFound && weightToAddTotal === 0) {
+            resultHTML += '<li>No plates needed. Just the bar!</li>'; // Handled earlier, but as a fallback.
+        }
+        resultHTML += '</ul>';
+
+        plateResultDiv.innerHTML = resultHTML;
+        plateResultDiv.style.color = 'green';
+    });
 
     // Initial workout generation is now handled by user click.
 }); 
