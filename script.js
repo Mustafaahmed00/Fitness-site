@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Barbell Rows",
                     sets: "4",
                     reps: "8-12",
-                    videoUrl: "https://www.youtube.com/embed/RquD0AYj0v4", // Alan Thrall - Barbell Row
+                    videoUrl: "https://www.youtube.com/embed/kBWAon7ItDw", // Updated: Built With Science - How To PROPERLY Barbell Row
                     description: "Barbell rows are a cornerstone for back thickness, engaging the lats, rhomboids, middle and lower trapezius, and biceps. Maintaining a strict form is crucial to protect the lower back and maximize muscle engagement."
                 },
                 {
