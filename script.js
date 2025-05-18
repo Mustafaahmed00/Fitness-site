@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     description: "Reverse pec deck or bent-over dumbbell flyes target the posterior (rear) deltoids and muscles of the upper back like the rhomboids and middle traps. Essential for shoulder health and a balanced physique."
                 }
             ],
-            arms: [
+            arms: [ // Biceps & Triceps
                 {
                     name: "Barbell Curls",
                     sets: "3",
@@ -249,29 +249,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Dumbbell Hammer Curls",
                     sets: "3",
                     reps: "10-15",
-                    videoUrl: "https://www.youtube.com/embed/zC3nLH_LAPE", // ScottHermanFitness - Hammer Curl
-                    description: "Hammer curls, with a neutral grip, emphasize the brachialis and brachioradialis muscles of the arm, contributing to overall arm thickness and forearm development."
+                    videoUrl: "https://www.youtube.com/embed/TwD-YGa3u4c", // ScottHermanFitness - Hammer Curls
+                    description: "Hammer curls, with a neutral grip, target the brachialis and brachioradialis in addition to the biceps. They are great for adding thickness to the arms."
                 },
                 {
                     name: "Overhead Dumbbell Extension",
                     sets: "3",
                     reps: "10-15",
-                    videoUrl: "https://www.youtube.com/embed/YbX7WdY6e_0", // Built with Science - Overhead Tricep Extension
-                    description: "Overhead dumbbell extensions target the long head of the triceps effectively due to the shoulder being in a flexed position, which stretches the long head."
-                },
-                {
-                    name: "Cable Pushdowns",
-                    sets: "3",
-                    reps: "12-15",
-                    videoUrl: "https://www.youtube.com/embed/2-LAMcpzODU", // Jeff Nippard - Tricep Pushdown
-                    description: "Cable pushdowns are an isolation exercise for the triceps, particularly effective for the lateral and medial heads. Various attachments (rope, bar) can be used to alter the feel."
+                    videoUrl: "https://www.youtube.com/embed/YbX7Wd8jQ-Q", // Built with Science - Overhead Tricep Extension
+                    description: "Overhead dumbbell extensions emphasize the long head of the triceps, which is important for overall triceps size. Focus on a full stretch at the bottom and a strong contraction at the top."
                 },
                 {
                     name: "Concentration Curls",
                     sets: "3",
                     reps: "12-15",
-                    videoUrl: "https://www.youtube.com/embed/0AUGkch3tzc", // Athlean-X - Concentration Curl
-                    description: "Concentration curls are a strict isolation exercise for the biceps, designed to maximize peak contraction by minimizing momentum and involvement of other muscle groups."
+                    videoUrl: "https://www.youtube.com/embed/0AUGkch3tzc", // Jeff Nippard - Concentration Curl
+                    description: "Concentration curls are an isolation exercise for the biceps that allows for a strong peak contraction. Performed seated with the arm braced against the inner thigh."
+                },
+                {
+                    name: "Triceps Pushdowns (Rope or Bar)",
+                    sets: "3",
+                    reps: "12-15",
+                    videoUrl: "https://www.youtube.com/embed/2-LAMcpzODU", // Athlean-X - Rope Pushdown
+                    description: "Triceps pushdowns are a versatile isolation exercise for the triceps. The rope attachment allows for a greater range of motion and emphasis on the lateral head, while a straight bar can also be effective."
                 }
             ],
             fullbody: [
@@ -393,7 +393,122 @@ document.addEventListener('DOMContentLoaded', () => {
                 { name: "Event Medley 2", details: "Example: Tire Flip -> Sled Drag -> Stone Over Bar. Vary events to cover different strengths.", videoUrl: "https://www.youtube.com/embed/xTireS5ak2Q", description: "Another example of an event medley, crucial for simulating competition conditions and building work capacity." },
                 { name: "Heavy Compound Lift", details: "e.g., Max Deadlift or Squat variation, or a heavy Log Press attempt. Focus on a single heavy lift.", videoUrl: "https://www.youtube.com/embed/op9kVnSso6Q", description: "Dedicated days or parts of sessions for pushing maximal strength on key compound lifts that are either events themselves or highly transferable." }
             ]
+        },
+        // --- ATHLETE TEMPLATES START ---
+        CBumBodybuilding: {
+            'Chest, Triceps, Rear Delts': [
+                { name: "Incline Dumbbell Press", sets: "4", reps: "6-8", videoUrl: "https://www.youtube.com/embed/8iPEnn-ltC8", description: "CBum often starts chest with incline movements. Focus on slow eccentrics and a powerful press." },
+                { name: "Machine Chest Press (GVT style)", sets: "10", reps: "10", videoUrl: "https://www.youtube.com/embed/sPZcDBxS01A", description: "German Volume Training (10x10) for hypertrophy. Use a weight you can manage for all sets." },
+                { name: "Barbell JM Press", sets: "2", reps: "8-10", videoUrl: "https://www.youtube.com/embed/dZgV00jAIzI", description: "A hybrid press targeting triceps and chest." },
+                { name: "Machine Dips", sets: "2", reps: "10-12", videoUrl: "https://www.youtube.com/embed/JcZ23bF7T7E", description: "Targets chest and triceps, good for controlled movements." },
+                { name: "Standing Overhead Cable Triceps Extension", sets: "2", reps: "12-15", videoUrl: "https://www.youtube.com/embed/X-iH7HOLj34", description: "Hits the long head of the triceps." },
+                { name: "Standing Single Arm Forward Cable Extension", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/CFr_qV-e6ew", description: "Single arm tricep isolation." },
+                { name: "Cable Facepull", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/rep-qVOkqgk", description: "For rear delts and shoulder health." }
+            ],
+            'Back and Biceps': [
+                { name: "Underhand Grip Barbell Row", sets: "4", reps: "6-8", videoUrl: "https://www.youtube.com/embed/B-cX02DjDEg", description: "Targets lats and biceps with a supinated grip." },
+                { name: "Chest Supported Dumbbell Row (GVT style)", sets: "10", reps: "10", videoUrl: "https://www.youtube.com/embed/H75im9fAUMc", description: "German Volume Training for back thickness, minimizes cheating." },
+                { name: "EZ Bar Preacher Curl", sets: "4", reps: "8-10", videoUrl: "https://www.youtube.com/embed/Gydpcouclx8", description: "Isolates the biceps." },
+                { name: "Standing Reverse Grip EZ Bar Curl", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/_ZHQMD_CdcQ", description: "Targets brachialis and forearms." },
+                { name: "Low Pulley Cable Curl", sets: "4", reps: "12-15", videoUrl: "https://www.youtube.com/embed/HMIUVGVILGw", description: "Constant tension for biceps." },
+                { name: "Machine Pullover", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/asQ5e9Bd1Gc", description: "Targets lats and serratus." },
+                { name: "Fat Gripz Machine Preacher Curl", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/F33L5PuiCH8", description: "Increases grip and forearm activation." }
+            ],
+            'Quads and Calves': [
+                { name: "Belt Squat", sets: "3-4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/W__NpLkO2CI", description: "Quad focus without heavy spinal loading." },
+                { name: "Pendulum Squat", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/J8czl8DDnJ4", description: "Machine squat for quad development." },
+                { name: "Hack Squat", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/0tn5K9NlCfo", description: "Another excellent quad builder." },
+                { name: "Leg Press", sets: "3", reps: "8-10", videoUrl: "https://www.youtube.com/embed/sEMarc3VqD0", description: "Overall leg development." },
+                { name: "Leg Extension", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/YyvSfVjQeL0", description: "Quad isolation." },
+                { name: "Seated Hip Adduction Machine", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/CjAVezAggkI", description: "Targets inner thighs." },
+                { name: "Seated Calf Raise", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/JbyjNymZOt0", description: "Soleus muscle focus." }
+            ],
+            'Shoulders': [
+                { name: "Machine or Cable Side Raise", sets: "4", reps: "10-15", videoUrl: "https://www.youtube.com/embed/3VcKaXpzqRo", description: "CBum emphasizes controlled side raises for shoulder width." },
+                { name: "Machine Shoulder Press", sets: "4", reps: "8-10", videoUrl: "https://www.youtube.com/embed/Y_7gYDm_rms", description: "Machine press for shoulder development." },
+                { name: "Reverse Pec Deck", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/H5gZgG2gX6Y", description: "Targets rear deltoids." },
+                { name: "Seated Dumbbell Side Raise", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/3VcKaXpzqRo", description: "Another variation for medial delts." },
+                { name: "Seated Dumbbell Shoulder Press", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/B-aVuyAUY3k", description: "Classic shoulder mass builder." }
+            ],
+            'Arms': [
+                 { name: "Rope Overhead Cable Extension", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/X-iH7HOLj34", description: "Triceps long head focus." },
+                 { name: "Decline Cable Skull Crusher", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/kQi8819c7js", description: "Skullcrusher variation." },
+                 { name: "Rope Cable Pressdown", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/2-LAMcpzODU", description: "Standard tricep pushdown." },
+                 { name: "EZ Bar Reverse Grip Preacher Curl", sets: "4", reps: "8-10", videoUrl: "https://www.youtube.com/embed/jZ-D0505vBQ", description: "Targets brachialis." },
+                 { name: "Wide Incline Dumbbell Curl", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/soxrZ14LMMY", description: "Bicep stretch and peak." },
+                 { name: "Machine Preacher Curl", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/03j8UvwzTKM", description: "Machine isolation for biceps." },
+                 { name: "Standing Dumbbell Hammer Curls", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/TwD-YGa3u4c", description: "Builds bicep and forearm thickness." }
+            ],
+             'Chest and Back': [
+                { name: "Incline Dumbbell Press (Superset w/ Underhand Lat Pulldown)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/8iPEnn-ltC8", description: "Agonist-antagonist superset." },
+                { name: "Underhand Lat Pulldown (Superset w/ Incline DB Press)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/gripNHtX8kI", description: "Targets lats." },
+                { name: "Chest Supported T-Bar Row (Superset w/ Incline Machine Press)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/K_x_wALSX5c", description: "Back thickness." },
+                { name: "Incline Machine Press (Superset w/ T-Bar Row)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/1zUm0nI2jB8", description: "Upper chest focus." },
+                { name: "Incline Machine Fly (Superset w/ Pullover Machine)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/x4J2a0k6A6Y", description: "Chest isolation." },
+                { name: "Pullover Machine (Superset w/ Incline Machine Fly)", sets: "4", reps: "10-12", videoUrl: "https://www.youtube.com/embed/M2kaGkbs4vM", description: "Lats and serratus." }
+            ],
+            'Hamstrings, Glutes, Calves': [
+                { name: "Seated Hip Abduction", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/dDF4d96Tuxs", description: "Outer glutes/hips." },
+                { name: "Seated Leg Curl", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/g1uP2C8kP6c", description: "Hamstring isolation." },
+                { name: "Seated Hip Adduction Machine", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/mAds9c3cW74", description: "Inner thighs." },
+                { name: "Plate Loaded Hip Thrust Machine", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/Gux__pTwN6E", description: "Glute development." },
+                { name: "Barbell Stiff Leg Deadlift", sets: "3", reps: "6-8", videoUrl: "https://www.youtube.com/embed/1Y9e0sAvb2s", description: "Hamstrings and glutes." },
+                { name: "Lying Leg Curl", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/1Tq3QdYUHBg", description: "Another hamstring isolation exercise." },
+                { name: "Standing Calf Raises", sets: "3", reps: "10-12", videoUrl: "https://www.youtube.com/embed/JbyjNymZOt0", description: "Gastrocnemius focus." }
+            ]
+        },
+        MitchellHooperStrongman: {
+            'Day 1: Squat & Push (Heavy)': [
+                { name: "Barbell Back Squat", sets: "Work to a Top Set (e.g. 1-3 Rep Max), then 2-3 backoff sets", reps: "3-5", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "Primary lower body strength builder. Focus on heavy loads with good form." },
+                { name: "Log Press", sets: "Work to a Top Set (e.g. 1-3 Rep Max), then 2-3 backoff sets", reps: "1-5", videoUrl: "https://www.youtube.com/embed/6wOySp4aT2U", description: "Core Strongman overhead movement. Focus on explosive power from legs and strong lockout." },
+                { name: "Close Grip Bench Press", sets: "3-4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/cXbWDe2r2hA", description: "Builds tricep and pressing strength, accessory for Log Press." },
+                { name: "Good Mornings", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/vKPGe8zb2S4", description: "Strengthens posterior chain, crucial for squats and overall stability." }
+            ],
+            'Day 2: Overhead & Leg Accessory (Volume/Speed)': [
+                { name: "Axle Bar Overhead Press (for reps or speed)", sets: "4-5", reps: "6-10 or AMRAP in time", videoUrl: "https://www.youtube.com/embed/eoIO9TocoUw", description: "Develops overhead pressing endurance and power with a challenging grip." },
+                { name: "Front Squats", sets: "3-4", reps: "5-8", videoUrl: "https://www.youtube.com/embed/m4ytaCJZpl0", description: "Quad focused squat variation, also builds core strength and upper back stability for carries." },
+                { name: "Walking Lunges (Dumbbell or Barbell)", sets: "3", reps: "10-15 per leg", videoUrl: "https://www.youtube.com/embed/L8fvypoCDyQ", description: "Unilateral leg strength, balance, and conditioning." },
+                { name: "Kettlebell Swings", sets: "3-4", reps: "15-25", videoUrl: "https://www.youtube.com/embed/YSxHifyI6s8", description: "Develops explosive hip power, hamstring and glute strength, and conditioning." }
+            ],
+            'Day 3: Hinge & Pull (Heavy)': [
+                { name: "Deadlift (Competition Stance - e.g., Conventional or Axle)", sets: "Work to a Top Set (e.g. 1-3 Rep Max), then 2-3 backoff sets", reps: "1-5", videoUrl: "https://www.youtube.com/embed/VL5Ab0T07e4", description: "Primary hinging movement. Focus on heavy loads, maintaining form." },
+                { name: "Farmer's Walk", sets: "3-4 sets", reps: "Max distance or time (e.g., 50-100ft)", videoUrl: "https://www.youtube.com/embed/lkHlJ81W0kM", description: "Builds tremendous grip, core strength, and conditioning. Crucial strongman event." },
+                { name: "Bent Over Rows (Barbell or Dumbbell)", sets: "3-4", reps: "8-12", videoUrl: "https://www.youtube.com/embed/kBWAon7ItDw", description: "Develops back thickness and pulling strength, supporting deadlifts and carries." },
+                { name: "Hamstring Curls (Lying or Seated)", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/1Tq3QdYUHBg", description: "Isolates hamstrings, important for knee flexion and deadlift power." }
+            ],
+             'Day 4: Event Practice / Conditioning (Optional)': [ // This day is highly variable
+                { name: "Atlas Stone Lifts (or Sandbag Lifts)", sets: "Varies", reps: "Varies", videoUrl: "https://www.youtube.com/embed/Sc4hZ4pfk_A", description: "Practice technique and build strength for specific strongman events." },
+                { name: "Yoke Walk", sets: "Varies", reps: "Varies", videoUrl: "https://www.youtube.com/embed/zDrRi4AbZg4", description: "Practice for yoke event, builds core and leg drive under heavy load." },
+                { name: "Sled Drags/Pushes", sets: "Varies", reps: "Varies", videoUrl: "https://www.youtube.com/embed/DAPgP7I2N4g", description: "Excellent for conditioning and building leg drive." }
+            ]
+        },
+        JesusOlivaresPowerlifting: { // Based on typical powerlifting programming focusing on S/B/D
+            'Day 1: Squat Focus (Heavy)': [
+                { name: "Competition Squat", sets: "Work up to 1 Top Single @ RPE 8-9, then 3-4 sets", reps: "3-5 @ RPE 7-8 (Backoff)", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "Main squat movement. Top set for strength, backoff sets for volume and technique. Jesus Olivares is known for his massive squat (WR 478kg)." },
+                { name: "Pause Squats", sets: "3", reps: "3-5", videoUrl: "https://www.youtube.com/embed/8GADuL93BvA", description: "Builds strength out of the hole and reinforces technique. Hold for 2-3 seconds at the bottom." },
+                { name: "Good Mornings", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/vKPGe8zb2S4", description: "Strengthens posterior chain (lower back, glutes, hamstrings). Essential for squat and deadlift support." },
+                { name: "Leg Extensions", sets: "3", reps: "12-15", videoUrl: "https://www.youtube.com/embed/YyvSfVjQeL0", description: "Quadricep isolation for hypertrophy and knee health."}
+            ],
+            'Day 2: Bench Focus (Heavy)': [
+                { name: "Competition Bench Press", sets: "Work up to 1 Top Single @ RPE 8-9, then 3-4 sets", reps: "3-5 @ RPE 7-8 (Backoff)", videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", description: "Main bench movement. Jesus Olivares has a 272.5kg competition bench." },
+                { name: "Close Grip Bench Press", sets: "3", reps: "5-8", videoUrl: "https://www.youtube.com/embed/cXbWDe2r2hA", description: "Strengthens triceps for bench lockout and builds overall pressing strength." },
+                { name: "Dumbbell Shoulder Press", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/B-aVuyAUY3k", description: "Builds shoulder strength, important for bench stability and power." },
+                { name: "Barbell Rows (e.g., Pendlay)", sets: "4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/ZlX_M9iV9xY", description: "Builds upper back strength to create a solid platform for benching." }
+            ],
+            'Day 3: Deadlift Focus (Heavy)': [
+                { name: "Competition Deadlift (Conventional)", sets: "Work up to 1 Top Single @ RPE 8-9, then 2-3 sets", reps: "3-5 @ RPE 7-8 (Backoff)", videoUrl: "https://www.youtube.com/embed/VL5Ab0T07e4", description: "Main deadlift movement. Jesus Olivares has a WR deadlift of 410kg." },
+                { name: "Romanian Deadlifts (RDLs)", sets: "3", reps: "6-10", videoUrl: "https://www.youtube.com/embed/JCXUYuzwNrM", description: "Develops hamstring and glute strength crucial for deadlift performance." },
+                { name: "Lat Pulldowns (Heavy)", sets: "4", reps: "8-12", videoUrl: "https://www.youtube.com/embed/gripNHtX8kI", description: "Strong lats help keep the bar close during deadlifts and maintain upper back tightness." },
+                { name: "Hyperextensions (with weight)", sets: "3", reps: "10-15", videoUrl: "https://www.youtube.com/embed/p8NAl5y9iHo", description: "Strengthens lower back and glutes." }
+            ],
+            'Day 4: Accessory / Volume Day (Lighter)': [
+                { name: "Squat (Volume/Technique)", sets: "4-5", reps: "5-8 @ RPE 6-7", videoUrl: "https://www.youtube.com/embed/Uv_DKDl7EjA", description: "Lighter squats focusing on bar speed, technique, and building volume." },
+                { name: "Bench Press (Volume/Technique, or variation like Incline/Spoto)", sets: "4-5", reps: "6-10 @ RPE 6-7", videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg", description: "Lighter bench work or a variation to address weak points and build volume." },
+                { name: "Accessory Pulling (e.g., Dumbbell Rows, Face Pulls)", sets: "3-4 each", reps: "10-15", videoUrl: "https://www.youtube.com/embed/5PoEksoZN58", description: "Upper back volume for posture and strength." },
+                { name: "Core Work (e.g., Planks, Ab Wheel)", sets: "3-4", reps: "To failure or timed", videoUrl: "https://www.youtube.com/embed/G_0j0Za8WvA", description: "Direct core work for stability in all lifts." }
+            ]
         }
+        // --- ATHLETE TEMPLATES END ---
     };
 
     function addWorkoutCustomizationListeners() {
@@ -590,7 +705,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const warmupSuggestionsArea = document.getElementById('warmup-routine'); // We'll create this div in HTML
         warmupSuggestionsArea.innerHTML = ''; // Clear previous warm-ups
 
-        const selectedWarmups = warmupExercises[day] || warmupExercises.general; // Fallback to general warm-up
+        let warmupKey = day.toLowerCase().split(' ')[0]; // e.g., "chest" from "Chest, Triceps, Rear Delts"
+        if (trainingType.includes('CBumBodybuilding')) warmupKey = day.split(',')[0].toLowerCase(); // More specific for CBum
+        else if (trainingType.includes('MitchellHooperStrongman')) warmupKey = day.split(':')[1]?.trim().split(' ')[0].toLowerCase() || 'general'; // e.g. "squat" from "Day 1: Squat & Push"
+        else if (trainingType.includes('JesusOlivaresPowerlifting')) warmupKey = day.split(' ')[0].toLowerCase(); // "squat" from "Squat Day"
+
+        const selectedWarmups = warmupExercises[warmupKey] || warmupExercises[trainingType.toLowerCase().split('(')[0].trim()] || warmupExercises.general;
 
         if (selectedWarmups && selectedWarmups.length > 0) {
             const warmupHeading = document.createElement('h4'); // Changed from h3 to h4 for better hierarchy
@@ -951,5 +1071,63 @@ document.addEventListener('DOMContentLoaded', () => {
         plateResultDiv.style.color = 'green';
     });
 
-    // Initial workout generation is now handled by user click.
+    // Populate Training Type options
+    function populateTrainingTypeOptions() {
+        // Clear existing options except the first placeholder one
+        trainingTypeSelect.innerHTML = '<option value="" disabled selected>Select Training Type</option>';
+
+        Object.keys(workouts).forEach(type => {
+            const option = document.createElement('option');
+            option.value = type;
+            // Add spaces before capital letters for display purposes, and handle specific names
+            if (type === 'CBumBodybuilding') {
+                option.textContent = 'Bodybuilding (Chris Bumstead)';
+            } else if (type === 'MitchellHooperStrongman') {
+                option.textContent = 'Strongman (Mitchell Hooper)';
+            } else if (type === 'JesusOlivaresPowerlifting') {
+                option.textContent = 'Powerlifting (Jesus Olivares)';
+            } else if (type === 'bodybuilding') {
+                option.textContent = 'Bodybuilding (General)';
+            } else if (type === 'powerlifting') {
+                option.textContent = 'Powerlifting (General)';
+            } else if (type === 'strongman') {
+                option.textContent = 'Strongman (General)';
+            } else {
+                option.textContent = type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+            }
+            trainingTypeSelect.appendChild(option);
+        });
+    }
+
+    // Populate Day options based on selected training type
+    function populateDayOptions() {
+        // Clear existing options except the first placeholder one
+        daySelect.innerHTML = '<option value="" disabled selected>Select Day</option>';
+
+        const selectedTrainingType = trainingTypeSelect.value;
+        if (selectedTrainingType && workouts[selectedTrainingType]) {
+            const days = Object.keys(workouts[selectedTrainingType]);
+            days.forEach(day => {
+                const option = document.createElement('option');
+                option.value = day;
+                // For athlete templates, the day key is already nicely formatted.
+                // For general types, we format it (e.g. 'squat_focus' -> 'Squat Focus')
+                if (selectedTrainingType === 'CBumBodybuilding' || selectedTrainingType === 'MitchellHooperStrongman' || selectedTrainingType === 'JesusOlivaresPowerlifting') {
+                    option.textContent = day; // Already formatted e.g. "Chest, Triceps, Rear Delts"
+                } else {
+                    // General types might still have underscored_names or need capitalization
+                    option.textContent = day.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); 
+                }
+                daySelect.appendChild(option);
+            });
+        }
+    }
+
+    // Initial setup
+    populateTrainingTypeOptions();
+    // populateDayOptions(); // Will be called by event listener on trainingTypeSelect change
+    updateWelcomeMessage(); // Load user if already set and display progress
+
+    // Add event listener for training type select to update day options
+    trainingTypeSelect.addEventListener('change', populateDayOptions);
 }); 
