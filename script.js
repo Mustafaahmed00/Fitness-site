@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: "Barbell Rows",
                     sets: "4",
                     reps: "8-12",
-                    videoUrl: "https://www.youtube.com/embed/kBWAon7ItDw", // Updated: Built With Science - How To PROPERLY Barbell Row
+                    videoUrl: "https://www.youtube.com/embed/kBWAon7ItDw", // Reverted: Built With Science - How To PROPERLY Barbell Row
                     description: "Barbell rows are a cornerstone for back thickness, engaging the lats, rhomboids, middle and lower trapezius, and biceps. Maintaining a strict form is crucial to protect the lower back and maximize muscle engagement."
                 },
                 {
@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     description: "A core powerlifting lift, testing overall strength. Engages nearly every muscle, primarily posterior chain (hamstrings, glutes, entire back). Sumo and Conventional are two main stances.",
                     worldRecord: "Raw Conventional WR: 487.5 kg (1,074.5 lbs) - Danny Grigsby"
                 },
-                { name: "Barbell Rows", sets: "4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/RquD0AYj0v4", description: "Builds back thickness and strength supportive of deadlifts and overall stability. Heavier weight and slightly lower reps than bodybuilding style." },
-                { name: "Good Mornings", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/vKPqcsW_1Cg", description: "Strengthens the lower back, hamstrings, and glutes. Excellent for building posterior chain strength that carries over to squats and deadlifts." },
+                { name: "Barbell Rows", sets: "4", reps: "6-10", videoUrl: "https://www.youtube.com/embed/I0uhDZ06hrQ", description: "Builds back thickness and strength supportive of deadlifts and overall stability. Heavier weight and slightly lower reps than bodybuilding style." },
+                { name: "Good Mornings", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/vKPGe8zb2S4", description: "Strengthens the lower back, hamstrings, and glutes. Excellent for building posterior chain strength that carries over to squats and deadlifts." },
                 { name: "Lat Pulldowns", sets: "3", reps: "8-12", videoUrl: "https://www.youtube.com/embed/eGo4IYlbE5g", description: "Accessory exercise for lat development, contributing to a stronger and more stable upper back for all lifts." }
             ],
             legs: [ 
